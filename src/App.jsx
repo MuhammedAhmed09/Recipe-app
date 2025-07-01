@@ -1,10 +1,20 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+
+//LIBRARIES
 import axios from 'axios';
+import { Route, Routes } from 'react-router-dom';
+import Navbar from './Navbar';
+
+//COMPONENTS
 import CategoryList from './components/CategoryList';
 import MealList from './components/MealList';
-import { Route, Routes } from 'react-router-dom';
 import MealDetails from './components/MealDetails';
+
+//PAGES
+import Home from './pages/Home';
+import Recipe from './pages/Recipe';
+import Blog from './pages/Blog';
 
 function App() {
   const [cat, setCat] = useState([]);
@@ -21,11 +31,16 @@ function App() {
   }, []);
   
   return (
-    <Routes>
-      <Route path='/' element={<CategoryList categories={cat} />}/>
-      <Route path='/category/:catName' element={<MealList />}/>
-      <Route path='/meal/:mealId' element={<MealDetails/>} />
-    </Routes>
+    <>
+      <Navbar/>
+      <Routes>
+        <Route path='/' element={<Home />}/>
+        <Route path='/blog' element={<Blog />}/>
+        <Route path='/category' element={<CategoryList categories={cat} />}/>
+        <Route path='/category/:catName' element={<MealList />}/>
+        <Route path='/meal/:mealId' element={<MealDetails/>} />
+      </Routes>
+    </>
   )
 }
 
