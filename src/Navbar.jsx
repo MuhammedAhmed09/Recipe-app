@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FaBars } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 
@@ -15,13 +15,11 @@ const navItems = {
 }
 
 const Navbar = () => {
-    const [selectedLink, setSelectedLink] = React.useState(0);    
     const [isOpen, setIsOpen] = React.useState(false);
 
-    const handleLinkClick = (index) => {
-        setSelectedLink(index);
-        setIsOpen(false)
-    }
+    const location = useLocation();
+    console.log(location);
+    
 
     const handleBarsClick = () => {
         setIsOpen(prev => !prev)
@@ -45,8 +43,8 @@ const Navbar = () => {
                     {navItems.links.map((item, index) => (
                         <li 
                             key={index} 
-                            className={`${selectedLink === index ? 'bg-white text-emerald-700 font-bold' : ' hover:bg-emerald-400'} px-4 py-1 mx-4 rounded-2xl`}  >
-                            <Link to={item.path} onClick={() => handleLinkClick(index)}>{item.component}</Link>
+                            className={`${(item.path === '/' ? location.pathname === '/' : location.pathname === item.path || location.pathname.startsWith(item.path + '/')) ? "text-emerald-700 bg-white font-bold" : 'hover:bg-emerald-400 text-white'} px-4 py-1 mx-4 rounded-2xl`}  >
+                            <Link to={item.path} onClick={() => setIsOpen(false)}>{item.component}</Link>
                         </li>
                     ))}
                 </ul>
