@@ -9,7 +9,7 @@ import blackLogo from '/image/blackcutomlogo.svg'
 const navItems = {
     links: [
         {path: '/', component: 'Home'},
-        {path: '/category', component: 'Recipe'},
+        {path: '/recipe', component: 'Recipe'},
         {path: '/blog', component: 'Blog'},
     ]
 }

@@ -12,7 +12,7 @@ const Home = () => {
         <p className="text-lg md:text-xl mb-6">
           Find meals that match your taste. Simple, quick, and tasty!
         </p>
-        <Link to='/category' >
+        <Link to='/recipe' >
           <button className="bg-white text-emerald-900 font-semibold px-6 py-3 rounded-2xl hover:bg-emerald-400 hover:text-white cursor-pointer transition-colors duration-300">
             Explore Now
           </button>
