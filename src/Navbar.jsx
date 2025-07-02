@@ -23,7 +23,7 @@ const Navbar = () => {
     }
 
   return (
-    <nav className="bg-emerald-300 text-white shadow-2xl py-2 px-4 sm:px-8 md:px-[10%] lg:px-[15%]">
+    <nav className="bg-emerald-300 text-white shadow-2xl py-2 px-4 sm:px-8 md:px-[10%] lg:px-[15%] ">
         <div className="flex items-center justify-between w-full py-2">
             <Link to='/'>
                 <img src={blackLogo} width={150} alt="logo"/>
@@ -36,7 +36,7 @@ const Navbar = () => {
                     </p>
                 </button>
 
-                <ul className={`${isOpen ? ' flex flex-col absolute top-20 left-0 w-full h-[50vh] justify-evenly bg-emerald-400 p-4 rounded-b-xl z-10 ' : 'hidden'} lg:flex lg:flex-row lg:static lg:bg-transparent`}>
+                <ul className={`${isOpen ? ' flex flex-col absolute top-20 left-0 w-full h-[50vh] justify-evenly bg-emerald-400 p-4 rounded-b-xl z-100 ' : 'hidden'} lg:flex lg:flex-row lg:static lg:bg-transparent`}>
                     {navItems.links.map((item, index) => (
                         <li 
                             key={index} 
