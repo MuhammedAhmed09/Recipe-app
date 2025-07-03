@@ -9,7 +9,7 @@ const CategoryList = ({ categories }) => {
         {categories.map((cat) => (
             <li 
               key={cat.idCategory} 
-              className='bg-white border border-gray-200 rounded-xl shadow-md p-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer '
+              className='bg-white border border-gray-200 rounded-xl shadow-md p-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-emerald-50 cursor-pointer'
             >
               <Link to={`/recipe/${cat.strCategory}`}>
                   <img
@@ -19,7 +19,7 @@ const CategoryList = ({ categories }) => {
                     className='w-full rounded-md mb-3'
                   />
                   <h3 className='text-xl font-bold text-emerald-700'>{cat.strCategory}</h3>
-                  <p className='text-gray-600'>{cat.strCategoryDescription.slice(0, 80)}...</p>
+                  <p className='text-gray-600'>{cat.strCategoryDescription?.slice(0, 80)}...</p>
               </Link>
             </li>
         ))}

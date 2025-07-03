@@ -12,14 +12,14 @@ const Home = () => {
 
       {/* Content */}
       <div className="relative z-10 text-white text-center md:text-left max-w-4xl flex flex-col items-center md:items-start">
-        <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+        <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight animate-fade-in-down">
           Discover <span className="text-emerald-300">Delicious</span> Recipes
         </h1>
         <p className="text-lg md:text-xl mb-8 text-gray-300">
           Explore hundreds of tasty meals from around the world. Simple to cook, hard to forget.
         </p>
         <Link to='/recipe'>
-          <button className="bg-white text-emerald-900 font-semibold px-6 py-3 rounded-2xl hover:bg-emerald-400 hover:text-white cursor-pointer transition-colors duration-300">
+          <button className="bg-white cursor-pointer text-emerald-700 font-semibold px-6 py-3 rounded-xl hover:bg-emerald-800 hover:text-white transition duration-300">
             Explore Recipes 🍽️
           </button>
         </Link>
