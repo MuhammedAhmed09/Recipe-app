@@ -7,6 +7,7 @@ const navItems = {
     links: [
         {path: '/', component: 'Home'},
         {path: '/recipe', component: 'Recipe'},
+        {path: '/favorites', component: 'Favorites'},
         {path: '/blog', component: 'Blog'},
     ]
 }

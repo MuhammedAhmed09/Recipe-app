@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { FavoriteContext } from '../context/FavoritesContext';
 
 const MealList = () => {
     const [meals, setMeals] = useState([]);
@@ -29,6 +30,7 @@ const MealList = () => {
     if (!meals || meals.length === 0) {
         return <p className="text-center text-gray-500 mt-10">No meals found for this category.</p>;
     }
+    
 
   return (
     <>

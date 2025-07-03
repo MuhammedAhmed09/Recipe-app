@@ -1,11 +1,15 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { FavoriteContext } from '../context/FavoritesContext';
 
 const MealDetails = () => {
     const { idMeal } = useParams();
     const [meal, setMeal] = useState(null);
     const [loading, setLoading] = useState(true);
+    // favorite code
+    const { favorites, addToFavorites, removeFromFavorites } = useContext(FavoriteContext);
+    const isFavorited = meal && favorites.some(fav => fav.idMeal === meal.idMeal);
 
     //FETCH MEAL
     useEffect(() => {
@@ -20,7 +24,6 @@ const MealDetails = () => {
           setLoading(false);
         });
     }, [idMeal]);
-    
 
     if (!meal) return <p className="text-center text-red-600 font-semibold mt-10">Meal not found.</p>;
     if (loading) return (
@@ -39,6 +42,16 @@ const MealDetails = () => {
             className='rounded-xl w-full md:w-[50%] max-h-[400px] object-cover shadow-md'
           />
         </div>
+        {/* favorite code */}
+        {meal && (
+          <div className='mb-4'>
+            {isFavorited ? (
+              <button onClick={() => removeFromFavorites(meal.idMeal)}>💔 Remove</button>
+            ) : (
+              <button onClick={() => addToFavorites(meal)}>❤️ Favorite</button>
+            )}
+          </div>
+        )}    
 
         <div className='text-gray-800 space-y-4 md:w-[50%]'>
           <h2 className='text-3xl md:text-4xl font-bold text-emerald-700'>
