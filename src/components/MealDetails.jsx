@@ -3,13 +3,13 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 const MealDetails = () => {
-    const { mealId } = useParams();
+    const { idMeal } = useParams();
     const [meal, setMeal] = useState(null);
     const [loading, setLoading] = useState(true);
 
     //FETCH MEAL
     useEffect(() => {
-      const URLMeals = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`;
+      const URLMeals = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
       axios.get(URLMeals)
         .then(function (response) {
           setMeal(response.data.meals[0]);
@@ -19,8 +19,7 @@ const MealDetails = () => {
           console.log(error);
           setLoading(false);
         });
-    }, [mealId]);
-    console.log(meal);
+    }, [idMeal]);
     
 
     if (!meal) return <p className="text-center text-red-600 font-semibold mt-10">Meal not found.</p>;

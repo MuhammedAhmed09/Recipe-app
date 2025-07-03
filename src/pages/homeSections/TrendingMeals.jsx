@@ -11,15 +11,16 @@ const TrendingMeals = () => {
         //requests INSTEAD OF [axios.get(randomURL), axios.get(randomURL), axios.get(randomURL), axios.get(randomURL), ..6]
         
         Promise.all(requests)
-            .then((response) => {
-                const meals = response.map(res => res.data.meals[0]);
-                setTrendingMeals(meals)
+            .then((responses) => {
+                const meals = responses
+                .map(res => res.data.meals?.[0])
+                .filter(meal => meal); // remove null or undefined meals
+                setTrendingMeals(meals);
             })
-            .catch(function (error) {
+            .catch((error) => {
                 console.log(error);
             });
         }, []);
-        console.log(trendingMeals);
         
 
   return (
@@ -34,7 +35,7 @@ const TrendingMeals = () => {
                         key={meal.idMeal}
                         className='bg-white border  border-gray-200 rounded-xl shadow-md p-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-emerald-50 cursor-pointer '
                     >
-                        <Link to={`/recipe/${meal.idMeal}`}>
+                        <Link to={`/meals/${meal.idMeal}`}>
                             <img
                                 src={meal?.strMealThumb} 
                                 alt={meal?.strMeal} 

@@ -22,12 +22,12 @@ const MealList = () => {
         );
     }, [catName]);
 
-    if (!meals || meals.length === 0) {
-        return <p className="text-center text-gray-500 mt-10">No meals found for this category.</p>;
-    }
-
     if (loading) {
         return <p className="text-center text-emerald-700 font-semibold mt-10">Loading meals...</p>;
+    }
+    
+    if (!meals || meals.length === 0) {
+        return <p className="text-center text-gray-500 mt-10">No meals found for this category.</p>;
     }
 
   return (
@@ -47,7 +47,7 @@ const MealList = () => {
             ) : (
                 meals.map((meal) => (
                     <li key={meal.idMeal} className='bg-white border border-gray-100 rounded-xl shadow-sm p-4 hover:shadow-xl hover:-translate-y-1 cursor-pointer transition'>
-                        <Link to={`/meal/${meal.idMeal}`}>
+                        <Link to={`/meals/${meal.idMeal}`}>
                             <img
                                 src={meal.strMealThumb}
                                 alt={meal.strMeal}
