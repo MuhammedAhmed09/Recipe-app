@@ -21,8 +21,8 @@ const Footer = () => {
                 <h4 className="font-semibold text-lg">Quick Links</h4>
                 <ul className="text-gray-300 space-y-1">
                     <li><Link to="/">Home</Link></li>
-                    <li><Link to="/categories">Categories</Link></li>
                     <li><Link to="/recipe">Recipes</Link></li>
+                    <li><Link to="/blog">Blog</Link></li>
                 </ul>
             </div>
         </div>

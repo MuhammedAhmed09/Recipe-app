@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+body {
+  background-color: #ecfdf5; /* emerald-50 */
+  font-family: 'Inter', sans-serif;
+}
