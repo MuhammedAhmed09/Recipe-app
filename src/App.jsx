@@ -16,11 +16,13 @@ import Favorites from './pages/Favorites';
 
 //CONTEXT 
 import { FavoriteProvider } from './context/FavoritesContext';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
 
   return (
     <FavoriteProvider>
+      <Toaster position='bottom-right' reverseOrder={false} />
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home />}/>

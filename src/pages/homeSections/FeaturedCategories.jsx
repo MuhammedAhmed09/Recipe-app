@@ -9,7 +9,7 @@ const FeaturedCategories = () => {
         const URLCat = 'https://www.themealdb.com/api/json/v1/1/categories.php';
         axios.get(URLCat)
             .then(function (response) {
-                setFeaturedCat(response.data.categories.slice(0, 5));
+                setFeaturedCat(response.data.categories.slice(0, 6));
             })
             .catch(function (error) {
                 console.log(error);

@@ -3,10 +3,17 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { FavoriteContext } from '../context/FavoritesContext';
 
+//ICONS
+import { GoHeart } from "react-icons/go";
+import { GoHeartFill } from "react-icons/go";
+import { Toaster } from 'react-hot-toast';
+
+
 const MealDetails = () => {
     const { idMeal } = useParams();
     const [meal, setMeal] = useState(null);
     const [loading, setLoading] = useState(true);
+
     // favorite code
     const { favorites, addToFavorites, removeFromFavorites } = useContext(FavoriteContext);
     const isFavorited = meal && favorites.some(fav => fav.idMeal === meal.idMeal);
@@ -42,21 +49,23 @@ const MealDetails = () => {
             className='rounded-xl w-full md:w-[50%] max-h-[400px] object-cover shadow-md'
           />
         </div>
-        {/* favorite code */}
-        {meal && (
-          <div className='mb-4'>
-            {isFavorited ? (
-              <button onClick={() => removeFromFavorites(meal.idMeal)}>💔 Remove</button>
-            ) : (
-              <button onClick={() => addToFavorites(meal)}>❤️ Favorite</button>
-            )}
-          </div>
-        )}    
 
         <div className='text-gray-800 space-y-4 md:w-[50%]'>
-          <h2 className='text-3xl md:text-4xl font-bold text-emerald-700'>
-            {meal.strMeal}
-          </h2>
+          <div className='flex justify-between items-center'>
+            <h2 className='text-3xl md:text-4xl font-bold text-emerald-700'>
+              {meal.strMeal}
+            </h2>
+            {/* favorite code */}
+            {meal && (
+              <div className='ml-2'>
+                {isFavorited ? (
+                  <button onClick={() => removeFromFavorites(meal.idMeal)} className='text-red-600 cursor-pointer text-3xl'><GoHeartFill/></button>
+                ) : (
+                  <button onClick={() => addToFavorites(meal)} className='text-gray-300 cursor-pointer text-3xl'><GoHeart /></button>
+                )}
+              </div>
+            )}   
+          </div> 
 
           <p>
             <span className='font-semibold'>Category:</span> {meal.strCategory}

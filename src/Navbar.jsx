@@ -33,12 +33,11 @@ const Navbar = () => {
                         {isOpen ? <IoClose/> : <FaBars/>}
                     </p>
                 </button>
-
-                <ul className={`${isOpen ? ' flex flex-col absolute top-20 left-0 w-full h-[50vh] justify-evenly bg-emerald-400 p-4 rounded-b-xl z-100 ' : 'hidden'} lg:flex lg:flex-row lg:static lg:bg-transparent`}>
+                <ul className={`${isOpen ? ' flex flex-col absolute top-20 left-0 w-full h-[50vh] justify-evenly bg-emerald-950 opacity-90 p-4 rounded-b-xl z-100' : 'hidden'} transition-transform duration-300 lg:flex lg:flex-row lg:static lg:bg-transparent`}>
                     {navItems.links.map((item, index) => (
                         <li 
                             key={index} 
-                            className={`${(item.path === '/' ? location.pathname === '/' : location.pathname === item.path || location.pathname.startsWith(item.path + '/')) ? "text-emerald-700 bg-white font-bold" : 'hover:bg-emerald-400 text-white'} px-4 py-1 mx-4 rounded-2xl`}  >
+                            className={`${(item.path === '/' ? location.pathname === '/' : location.pathname === item.path || location.pathname.startsWith(item.path + '/')) ? "bg-white text-emerald-700 font-bold shadow" : 'text-white hover:bg-emerald-600'} px-4 py-1 mx-2 rounded-2xl transition font-medium`}  >
                             <Link to={item.path} onClick={() => setIsOpen(false)}>{item.component}</Link>
                         </li>
                     ))}
@@ -53,7 +52,7 @@ const Navbar = () => {
         {/* Auth in mobile */}
         {isOpen && (
             <div className="lg:hidden -mt-2 text-center">
-            <h2>Auth</h2>
+            <h2 className='py-2'>Auth</h2>
             </div>
         )}
     </nav>
